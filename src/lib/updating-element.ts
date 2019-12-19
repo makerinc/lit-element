@@ -588,7 +588,7 @@ export abstract class UpdatingElement extends HTMLElement {
           ctor._classProperties!.get(name) || defaultPropertyDeclaration;
       if (ctor._valueHasChanged(
               this[name as keyof this], oldValue, options.hasChanged)) {
-        if (!this._changedProperties.has(name)) {
+        if (this._changedProperties && !this._changedProperties.has(name)) {
           this._changedProperties.set(name, oldValue);
         }
         // Add to reflecting properties set.
